@@ -88,7 +88,7 @@ const commands = {
     let Requester = msg.author.username
     if (!queue.hasOwnProperty(msg.guild.id)) queue[msg.guild.id] = {}, queue[msg.guild.id].playing = false, queue[msg.guild.id].songs = [];
 			queue[msg.guild.id].songs.push({url: Url, title: Title, requester: Requester});
-    msg.channel.send(new Discord.RichEmbed().setTitle(":white_check_mark: Success :white_check_mark:").setDescription("Your song has been successfully added to the queue").addField("Song", Title).addField("Length", video.length);
+    msg.channel.send(new Discord.RichEmbed().setTitle(":white_check_mark: Success :white_check_mark:").setDescription("Your song has been successfully added to the queue").addField("Song", Title).addField("Length", video.length));
 }
       testAll(url);
       
