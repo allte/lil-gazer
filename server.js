@@ -117,11 +117,11 @@ const commands = {
         'info': (msg) => {
 		if (queue[msg.guild.id] === undefined) return msg.channel.send(new Discord.RichEmbed().setTitle(":x:Error:x:").setDescription(`Add some songs to the queue first with ${tokens.prefix}add`));
 		queue[msg.guild.id].songs.forEach((song, i) => {
-			let temporary = song.url;
+			let temporary = song.title;
 			const YouTube = require("discord-youtube-api");
       const youtube = new YouTube("AIzaSyCQ_-aH215btVPOX331giHH6P79x4kZxLk");
       async function testAll(input) {
-    const video = await youtube.getVideo(input);
+    const video = await youtube.searchVideos(input);
 			message.reply(`"${video.title}"'s length is ${video.length}`);
 			}
 			testAll(temporary);
