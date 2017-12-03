@@ -14,7 +14,8 @@
     "express": "^4.15.5",
     "node-opus": "^0.2.7",
     "youtube-search": "^1.0.10",
-    "ytdl-core": "github:fent/node-ytdl-core#master"
+    "ytdl-core": "github:fent/node-ytdl-core#master",
+    "ffmpeg": "^0.0.4"
   },
   "author": "BDISTIN",
   "license": "MIT"
