@@ -60,7 +60,7 @@ const commands = {
      					const youtube = new YouTube("AIzaSyCQ_-aH215btVPOX331giHH6P79x4kZxLk");
       					async function testAll(input) {
     						const video = await youtube.searchVideos(input);
-						msg.reply(`"${video.title}"'s length is ${video.length}`);
+						msg.channel.send(new Discord.RichEmbed().setTitle(":mag_right:Info:mag:").addField("Title", video.title).addField("Total Length", video.length).addField("Time Elapsed", `${Math.floor(dispatcher.time / 60000)}:${Math.floor((dispatcher.time % 60000)/1000) <10 ? '0'+Math.floor((dispatcher.time % 60000)/1000) : Math.floor((dispatcher.time % 60000)/1000)}`);
 					}
 					testAll(song.title);
 				}
@@ -117,7 +117,7 @@ const commands = {
 		msg.channel.sendMessage(`__**Queue:**__ Currently **${tosend.length}** song(s) queued ${(tosend.length > 15 ? '*[Only next 15 shown]*' : '')}\n\`\`\`${tosend.slice(0,15).join('\n')}\`\`\``);
 	},
 	'help': (msg) => {
-		let tosend = ['```xl', tokens.prefix + 'join : "Joins VC of whoever sent the message"',	tokens.prefix + 'add : "Add songs to the queue (links only)"', tokens.prefix + 'queue : "Shows t"', tokens.prefix + 'play : "Play the music queue if already joined to a voice channel"', '', 'if the music bot is running => {'.toUpperCase(), tokens.prefix + 'pause : "Pauses the music playing"',	tokens.prefix + 'resume : "Resumes the music playing"', tokens.prefix + 'skip : "Skips the song playing"', tokens.prefix + 'time : "Shows the playtime of the song."',	'volume+ : "increases volume by 2%/+"',	'volume- : "decreases volume by 2%/-"',	'```'];
+		let tosend = ['```xl', tokens.prefix + 'join : "Joins VC of whoever sent the message"',	tokens.prefix + 'add : "Add songs to the queue (links only)"', tokens.prefix + 'queue : "Shows t"', tokens.prefix + 'play : "Play the music queue if already joined to a voice channel"', '', 'if the music bot is running => {'.toUpperCase(), tokens.prefix + 'pause : "Pauses the music playing"',	tokens.prefix + 'resume : "Resumes the music playing"', tokens.prefix + 'skip : "Skips the song playing"', tokens.prefix + 'time : "Shows the playtime of the song."', tokens.prefix + 'info : "Displays information about the song being played."',	'volume+ : "increases volume by 2%/+"',	'volume- : "decreases volume by 2%/-"',	'```'];
 		msg.channel.sendMessage(tosend.join('\n'));
 	},
 	'reboot': (msg) => {
