@@ -122,7 +122,7 @@ const commands = {
       const youtube = new YouTube("AIzaSyCQ_-aH215btVPOX331giHH6P79x4kZxLk");
       async function testAll(input) {
     const video = await youtube.searchVideos(input);
-			message.reply(`"${video.title}"'s length is ${video.length}`);
+			msg.reply(`"${video.title}"'s length is ${video.length}`);
 			}
 			testAll(temporary);
 		});
