@@ -62,7 +62,7 @@ const commands = {
     						const video = await youtube.searchVideos(input);
 						msg.reply(`"${video.title}"'s length is ${video.length}`);
 					}
-					testAll(info.title);
+					testAll(song.title);
 				}
 			});
 			dispatcher.on('end', () => {
