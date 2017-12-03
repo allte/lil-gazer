@@ -63,6 +63,7 @@ const commands = {
 						msg.reply(`"${video.title}"'s length is ${video.length}`);
 					}
 					testAll(info.title);
+				}
 			});
 			dispatcher.on('end', () => {
 				collector.stop();
