@@ -136,7 +136,6 @@ client.on('message', msg => {
 	if (commands.hasOwnProperty(msg.content.toLowerCase().slice(tokens.prefix.length).split(' ')[0])) commands[msg.content.toLowerCase().slice(tokens.prefix.length).split(' ')[0]](msg);
 });
 
-var http = require("http");
 setInterval(function() {
     http.get("http://lil-gazer.herokuapp.com");
 }, 300000);
