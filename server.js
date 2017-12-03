@@ -54,7 +54,15 @@ const commands = {
 					msg.channel.sendMessage(`Volume: ${Math.round(dispatcher.volume*50)}%`);
 				} else if (m.content.startsWith(tokens.prefix + 'time')){
 					msg.channel.send(new Discord.RichEmbed().setTitle(":mag_right:Info:mag:").addField("Time Elapsed", `${Math.floor(dispatcher.time / 60000)}:${Math.floor((dispatcher.time % 60000)/1000) <10 ? '0'+Math.floor((dispatcher.time % 60000)/1000) : Math.floor((dispatcher.time % 60000)/1000)}`));
-				}
+				} else if (m.content.startsWith(tokens.prefix + 'info')){
+					let temporary = song.title;
+					const YouTube = require("discord-youtube-api");
+     					const youtube = new YouTube("AIzaSyCQ_-aH215btVPOX331giHH6P79x4kZxLk");
+      					async function testAll(input) {
+    						const video = await youtube.searchVideos(input);
+						msg.reply(`"${video.title}"'s length is ${video.length}`);
+					}
+					testAll(info.title);
 			});
 			dispatcher.on('end', () => {
 				collector.stop();
@@ -113,20 +121,8 @@ const commands = {
 	},
 	'reboot': (msg) => {
 		if (msg.author.id == tokens.adminID) process.exit(); //Requires a node module like Forever to work.
-	},
-        'info': (msg) => {
-		if (queue[msg.guild.id] === undefined) return msg.channel.send(new Discord.RichEmbed().setTitle(":x:Error:x:").setDescription(`Add some songs to the queue first with ${tokens.prefix}add`));
-		queue[msg.guild.id].songs.forEach((song, i) => {
-			let temporary = song.title;
-			const YouTube = require("discord-youtube-api");
-      const youtube = new YouTube("AIzaSyCQ_-aH215btVPOX331giHH6P79x4kZxLk");
-      async function testAll(input) {
-    const video = await youtube.searchVideos(input);
-			msg.reply(`"${video.title}"'s length is ${video.length}`);
-			}
-			testAll(temporary);
-		});
 	}
+        
 			
 };
 
