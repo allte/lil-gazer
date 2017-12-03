@@ -88,7 +88,7 @@ const commands = {
     let Requester = msg.author.username
     if (!queue.hasOwnProperty(msg.guild.id)) queue[msg.guild.id] = {}, queue[msg.guild.id].playing = false, queue[msg.guild.id].songs = [];
 			queue[msg.guild.id].songs.push({url: Url, title: Title, requester: Requester});
-    msg.channel.send(new Discord.RichEmbed().setTitle(":white_check_mark: Success :white_check_mark:").setDescription("Your song has been successfully added to the queue").addField("Song", Title));
+    msg.channel.send(new Discord.RichEmbed().setTitle(":white_check_mark: Success :white_check_mark:").setDescription("Your song has been successfully added to the queue").addField("Song", Title).addField("Length", video.length);
 }
       testAll(url);
       
@@ -113,7 +113,21 @@ const commands = {
 	},
 	'reboot': (msg) => {
 		if (msg.author.id == tokens.adminID) process.exit(); //Requires a node module like Forever to work.
+	},
+        'info': (msg) => {
+		if (queue[msg.guild.id] === undefined) return msg.channel.send(new Discord.RichEmbed().setTitle(":x:Error:x:").setDescription(`Add some songs to the queue first with ${tokens.prefix}add`));
+		queue[msg.guild.id].songs.forEach((song, i) => {
+			let temporary = song.url;
+			const YouTube = require("discord-youtube-api");
+      const youtube = new YouTube("AIzaSyCQ_-aH215btVPOX331giHH6P79x4kZxLk");
+      async function testAll(input) {
+    const video = await youtube.getVideo(input);
+			message.reply(`"${video.title}"'s length is ${video.length}`);
+			}
+			testAll(temporary);
+		});
 	}
+			
 };
 
 client.on('ready', () => {
