@@ -60,7 +60,7 @@ const commands = {
      					const youtube = new YouTube("AIzaSyCQ_-aH215btVPOX331giHH6P79x4kZxLk");
       					async function testAll(input) {
     						const video = await youtube.searchVideos(input);
-						msg.channel.send(new Discord.RichEmbed().setTitle(":mag_right:Info:mag:").addField("Title", video.title).addField("Total Length", video.length).addField("Time Elapsed", `${Math.floor(dispatcher.time / 60000)}:${Math.floor((dispatcher.time % 60000)/1000) <10 ? '0'+Math.floor((dispatcher.time % 60000)/1000) : Math.floor((dispatcher.time % 60000)/1000)}`);
+						msg.channel.send(new Discord.RichEmbed().setTitle(":mag_right:Info:mag:").addField("Title", video.title).addField("Total Length", video.length).addField("Time Elapsed", `${Math.floor(dispatcher.time / 60000)}:${Math.floor((dispatcher.time % 60000)/1000) <10 ? '0'+Math.floor((dispatcher.time % 60000)/1000) : Math.floor((dispatcher.time % 60000)/1000)}`));
 					}
 					testAll(song.title);
 				}
